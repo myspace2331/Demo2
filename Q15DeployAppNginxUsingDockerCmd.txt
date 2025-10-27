@@ -1,0 +1,41 @@
+Q15. Deploy web application using nginx webserver using docker commandline
+Steps:
+Deploy Web App (nginx) via Docker CLI
+
+Step 1: Pull nginx Image
+Bash
+docker pull nginx:latest
+
+Step 2: Run Container Interactively
+This gives you a shell inside the container and maps port 5555.
+
+Bash
+docker run -it -p 5555:80 --name server_Alok nginx:latest bash
+
+Step 3: Inside Container - Modify Webpage
+You are now root inside the container.
+
+Bash
+# Go to web directory
+cd /usr/share/nginx/html/
+
+# Backup default page
+mv index.html index.html_backup
+
+# Create new page
+nano index.html
+
+Save & Exit: Ctrl+O, Enter, Ctrl+X.
+
+Step 4: Inside Container - Start nginx Service
+Bash
+
+# Check status (will show not running)
+service nginx status
+
+# Start nginx
+service nginx start
+Step 5: Verify
+Open your host machine's browser.
+
+Go to http://localhost:5555.

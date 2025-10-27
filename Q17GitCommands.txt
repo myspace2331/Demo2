@@ -1,0 +1,41 @@
+Q17. Scenario based question on GIT and GITHUB
+ 
+Steps:
+
+sudo su
+apt update
+cd Desktop
+mkdir mygit
+cd mygit
+ls
+pwd
+apt-get install git
+git --version
+git config --global user.email "email"
+git config --global user.name "name"
+git config --list
+git init
+ls -altr
+git clone [link]
+ls -ltr
+cd fileaname 
+ls
+cat filename
+nano filename.py
+print("hi")
+ls
+git status 
+git add filename.py
+git status
+git commit -m "msg"
+git branch
+git status
+git push origin main
+git log
+git log  --oneline
+git show [commitID]
+nano file1
+git add .
+git status
+git log --oneline
+git diff id1 id2

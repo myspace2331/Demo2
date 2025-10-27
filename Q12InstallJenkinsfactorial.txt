@@ -1,0 +1,79 @@
+Q12. Install Jenkins and execute factorial of a number
+
+1.
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y fontconfig openjdk-17-jr
+java -version
+OR
+1.
+sudo apt update
+sudo apt install -y openjdk-17-jdk
+java -version
+
+2.Add Jenkins Repository Key
+#curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee \ /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+3.Add Jenkins Repository
+#echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+4.Install Jenkins
+sudo apt update
+sudo apt install -y jenkins
+jenkins --version
+
+5.Enable and Start Jenkins
+sudo systemctl enable Jenkins
+sudo systemctl start Jenkins
+sudo systemctl status jenkins
+sudo ufw allow 8080
+sudo ufw reload
+
+6.Access Jenkins Web UI
+Open browser → http://your-server-ip:8080
+Get initial admin password:
+cat /var/lib/jenkins/secrets/initialAdminPassword
+Copy the password, paste it into Jenkins setup wizard.
+Install suggested plugins and create an admin user.
+
+7.To disable Jenkins login
+sudo nano /var/lib/jenkins/config.xml
+change following in file:
+<useSecurity>false</useSecurity>
+(or <useSecurity>false</useSecurity>
+<authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>)
+Now do, sudo systemctl restart jenkins
+
+8.To create a new user:
+Go to Manage Jenkins → Security → Manage Users
+Click Create User
+Fill in details
+Click Create User
+Now again go to sudo nano /var/lib/jenkins/config.xml
+<useSecurity>true</useSecurity>
+
+Now to Make instance for hello world:
+9.Create a New Job
+On the Jenkins dashboard, click "New Item".
+Enter an item name: Factorial-Job.
+Choose "Freestyle project" and click "OK".
+On the configuration screen, scroll to the "Source Code Management" section.
+Select "Git".
+In the "Repository URL" field, paste the URL of your Git repository containing the java file.
+https://github.com/USERNAME/Factorial.git
+
+10.Add Build Steps:
+Scroll to the "Build Steps" section.
+Click "Add build step" and select "Execute shell".
+In the Command text area, enter the following commands:
+javac Factorial.java
+java Factorial
+Click "Save".
+
+11.Run the Build:
+In the left-hand menu, click "Build Now".
+In the "Build History" panel on the left, click on the latest build number 
+Click on "Console Output".
+Scroll to the bottom of the log to confirm the successful execution and see your program's output.
+

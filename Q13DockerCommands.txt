@@ -1,0 +1,63 @@
+Q13. Implement 10 different docker commands
+
+Steps:
+1.Install Docker
+sudo su
+curl -fsSL https://get.docker.com -o get-docker.sh 
+sudo sh get-docker.sh 
+ls
+docker --version
+docker info: Give details about docker
+systemctl status docker: To Check docker engine is active or not
+systemctl start docker: To start the docker engine
+docker login : To login docker
+docker images : List all images
+docker container run ubuntu cat /etc/os-release
+To List Container: docker container ls
+Here the container started and exited at same time.
+To List Container: #docker container ls -a
+docker ps: shows all currently running containers.
+docker pull ubuntu :Downloads an image from Docker Hub
+docker rmi image_name : Deletes an image
+docker ps :Shows running containers
+docker ps -a :Shows all containers (running + stopped)
+docker run image_name :Creates and starts a new container
+docker run -it ubuntu :Runs Ubuntu interactively
+docker rm container_id :Deletes a container
+
+
+
+or 
+
+
+
+
+sudo su - Become root user
+docker -v - Show Docker version (short)
+docker --version - Show Docker version (long)
+docker info - Show Docker system info
+systemctl status docker - Check Docker service status
+docker login -u YourUsername - Log in to Docker Hub
+docker container ls - List running containers
+docker --help | less - Show Docker help (paginated)
+docker network ls - List Docker networks
+docker container ls -a - List all containers (running/stopped)
+docker images - List downloaded images
+docker images -a - List all images (including intermediate)
+docker rmi -f <image_id> - Force remove image by ID
+docker rmi -f <image_id1> <image_id2> - Force remove multiple images
+docker container ls -aq - List only container IDs (all)
+docker container rm $(docker container ls -aq) - Remove all containers
+docker container ls -a - List all containers again
+docker container run ubuntu cat /etc/os-release - Run command in new container
+docker container ls -a - List all containers again
+docker images - List images again
+docker container run ubuntu sleep 60 - Run container, sleep 60s
+docker container ls -a - List all containers again
+docker container rm <id1> <id2> - Remove specific containers
+docker container ls -a - List all containers again
+docker container run -it ubuntu /bin/bash - Run interactive container shell
+docker pull mysql:latest - Download latest MySQL image
+docker run --name your-mysql -e MYSQL_ROOT_PASSWORD=yourpass -d mysql - Run MySQL container detached
+docker exec -it your-mysql bash - Enter running container shell
+bash# mysql -u root -p - Login to MySQL (inside container)

@@ -1,0 +1,133 @@
+Q1.Automate Form Filling Using Selenium and Python. 
+
+Steps:
+Open firefox 
+1.On right corner click on extensions
+2.Search for selenium IDE 
+3.Click on Add to Firefox
+or
+3.Open URLhttps://addons.mozilla.org/en-us/firefox/addon/selenium-ide/ It will redirect you to the official add-on page of Firefox. and click on add to firefox
+
+4.Go to the top right corner on your Firefox browser and look for the Selenium IDE icon
+5.Click on that icon to launch Selenium IDE.
+6.Click on : Create a new project, give name and click ok
+7.Rename the project as "selenium_demo".
+8.Rename the test case as "javaTpoint_test"
+9.Click on the "Start Recording" Button present on the top right corner 
+10.Set your project's base URL as www.google.com
+11.It will redirect you to the Google search engine page.
+Perform some actions on browser https://www.w3schools.com/html/html_forms.asp
+It will redirect you to the Google search engine page.
+12.Click on the "Run Current Test" button present on the tool bar menu of the IDE.
+13.The Log pane displays the overall summary of the executed test scripts.
+14.Click on the save button present on the extreme right corner of the menu bar. Save the entire test suite as "name.side” Test.
+
+15. Make new folder and a file inside it with name 
+formautomate.py
+sudo nano formautomate.py
+# form_fill.py
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+# Initialize Chrome driver
+driver = webdriver.Chrome()
+# Step 1: Open form page
+driver.get("https://www.w3schools.com/html/html_forms.asp")
+driver.maximize_window()
+# Step 2: Find input fields by name
+fname = driver.find_element(By.ID, "fname")
+Subject Incharge : Sujata Oak Department of Information Technology
+lname = driver.find_element(By.ID, "lname")
+# Step 3: Clear and fill the form fields
+fname.clear()
+fname.send_keys("Sujata")
+lname.clear()
+lname.send_keys("Oak")
+# Step 4: Scroll and click Submit button
+driver.find_element(By.XPATH, "//input[@type='submit']").click()
+# Step 5: Wait and print the new URL
+time.sleep(5)
+print("Form submitted successfully!")
+print("Redirected URL:", driver.current_url)
+# Step 6: Close browser
+driver.quit()
+
+16.If python not installed
+sudo apt update
+sudo apt install python3 -y
+
+17.Run python file
+python3 filename.py
+
+
+
+or   
+
+
+
+1.Automate Form Filling Using Selenium (on Ubuntu)
+Goal: Run a Python script that opens Chrome, fills a web form, and submits it.
+
+Step 1: Install All Requirements (Terminal)
+Run these 4 commands one by one. This is the most important step to prevent errors.
+
+Update Ubuntu's package list:
+
+Bash
+sudo apt update
+Install pip (the Python installer):
+
+Bash
+sudo apt install python3-pip
+Install the chromedriver (the "remote control" for Chrome):
+
+Bash
+sudo apt install chromium-chromedriver
+Install selenium (the Python library):
+
+Bash
+pip3 install selenium
+(If you run these, you will not get the ModuleNotFoundError)
+
+Open VScode
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+
+# Initialize Chrome driver
+driver = webdriver.Chrome()
+
+# Step 1: Open form page
+driver.get("https://www.w3schools.com/html/html_forms.asp")
+driver.maximize_window()
+
+# Step 2: Find input fields by ID
+fname = driver.find_element(By.ID, "fname")
+lname = driver.find_element(By.ID, "lname")
+
+# Step 3: Clear and fill the form fields
+fname.clear()
+fname.send_keys("Alok")  # Use your name
+
+lname.clear()
+lname.send_keys("Sahoo") # Use your last name
+
+# Step 4: Find and click Submit button
+driver.find_element(By.XPATH, "//input[@type='submit']").click()
+
+# Step 5: Wait and print the new URL
+time.sleep(5)
+print("Form submitted successfully!")
+print("Redirected URL:", driver.current_url)
+
+# Step 6: Close browser
+driver.quit()
+
+Step 3: Run Your Script (Terminal)
+Make sure you are in the same folder as your selenium_form.py file.
+
+Bash
+python3 selenium_form.py

@@ -1,0 +1,23 @@
+Q1.Automate Form Filling Using Selenium and Python. 
+
+Steps:
+Open firefox 
+1.On right corner click on extensions
+2.Search for selenium IDE 
+3.Click on Add to Firefox
+or
+3.Open URLhttps://addons.mozilla.org/en-us/firefox/addon/selenium-ide/ It will redirect you to the official add-on page of Firefox. and click on add to firefox
+
+4.Go to the top right corner on your Firefox browser and look for the Selenium IDE icon
+5.Click on that icon to launch Selenium IDE.
+6.Click on : Create a new project, give name and click ok
+7.Rename the project as "selenium_demo".
+8.Rename the test case as "javaTpoint_test"
+9.Click on the "Start Recording" Button present on the top right corner 
+10.Set your project's base URL as www.google.com
+11.It will redirect you to the Google search engine page.
+Perform some actions on browser
+It will redirect you to the Google search engine page.
+12.Click on the "Run Current Test" button present on the tool bar menu of the IDE.
+13.The Log pane displays the overall summary of the executed test scripts.
+14.Click on the save button present on the extreme right corner of the menu bar. Save the entire test suite as "name.side” Test.

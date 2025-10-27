@@ -1,0 +1,133 @@
+Q4.Automate YouTube Search Using Selenium and Python 
+Steps:
+1.Selenium IDE browser extension.
+2.Start a New Project
+3.Select "Record a new test in a new project".
+4.Set the Project Name to youtube_search_project.
+5.Set the Base URL to: https://www.youtube.com  (for wikipedia https://www.wikipedia.org)
+6.Click "Start Recording".
+7.A new browser window will open at YouTube.
+In the YouTube search bar, type "DevOps tutorials".
+Click the search icon (the magnifying glass).
+8.Go back to the Selenium IDE window and click the red "Stop Recording" button.
+9.Click the "Run current test" button (the play icon) in the Selenium IDE toolbar.
+10.Save the Project
+Click the Save icon (floppy disk) in the top-right corner.
+Save the file as YouTubeSearch.side.
+
+11.Final Steps Using Python (as requested in the topic title)
+Objective: To write a Python script that automates a YouTube search.
+Prepare the Files
+Create a new folder for your project.
+Inside the folder, create a new file named youtube_automation.py.
+Paste the following code into the file.
+code
+Python
+# youtube_automation.py
+# 1. Import required libraries
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+# 2. Initialize the Chrome WebDriver
+driver = webdriver.Chrome()
+try:
+    # 3. Open YouTube
+    driver.get("https://www.youtube.com")
+    # Wait a moment for the page to load
+    time.sleep(2)
+    # 4. Find the search bar element and type in it
+    # YouTube's search bar has a 'name' attribute of 'search_query'
+    search_bar = driver.find_element(By.NAME, "search_query")
+    search_bar.send_keys("DevOps tutorials")
+    # 5. Press Enter to submit the search
+    search_bar.send_keys(Keys.RETURN)
+    # 6. Wait for 5 seconds to see the results
+    print("Search submitted! Viewing results now...")
+    time.sleep(5)
+    print("Automation complete.")
+finally:
+    # 7. Close the browser window
+    driver.quit()
+
+12. Run the Script from Your Terminal
+Make sure you have Python and Selenium installed (pip install selenium).
+Make sure you have the correct WebDriver for your browser installed.
+python youtube_automation.py
+
+13.Verify the Result
+A Chrome browser window will automatically open.
+It will navigate to YouTube, type "DevOps tutorials" into the search bar, and press Enter.
+The browser will stay open for 5 seconds showing the search results, and then it will automatically close. Your terminal will show the "Automation complete." message.
+
+or 
+
+
+1.Automate Form Filling Using Selenium (on Ubuntu)
+Goal: Run a Python script that opens Chrome, fills a web form, and submits it.
+
+Step 1: Install All Requirements (Terminal)
+Run these 4 commands one by one. This is the most important step to prevent errors.
+
+Update Ubuntu's package list:
+
+Bash
+sudo apt update
+Install pip (the Python installer):
+
+Bash
+sudo apt install python3-pip
+Install the chromedriver (the "remote control" for Chrome):
+
+Bash
+sudo apt install chromium-chromedriver
+Install selenium (the Python library):
+
+Bash
+pip3 install selenium
+(If you run these, you will not get the ModuleNotFoundError)
+
+Open VScode
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+
+# Initialize Chrome driver
+driver = webdriver.Chrome()
+
+# Step 1: Open YouTube
+driver.get("https://www.youtube.com")
+driver.maximize_window()
+print("Opened YouTube successfully.")
+time.sleep(3) # Wait for the page to load
+
+try:
+    # Step 2: Find the search bar
+    # YouTube's search bar has a 'name' attribute of 'search_query'
+    search_box = driver.find_element(By.NAME, "search_query")
+
+    # Step 3: Type in the search
+    search_box.send_keys("DevOps tutorials")
+
+    # Step 4: Press Enter
+    search_box.send_keys(Keys.RETURN)
+
+    print("Search submitted!")
+
+    # Wait 10 seconds to see the results
+    time.sleep(10) 
+
+except Exception as e:
+    print(f"An error occurred: {e}")
+
+finally:
+    # Step 5: Close browser
+    driver.quit()
+
+Step 3: Run Your Script (Terminal)
+Make sure you are in the same folder as your Youtube.py file.
+
+Bash
+python3 Youtube.py

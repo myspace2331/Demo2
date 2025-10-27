@@ -1,0 +1,30 @@
+Q2. Demonstrate how to deploy “Hello World” java application using a Dockerfile? 
+
+Step:
+1.cd Downloads
+2.mkdir docker-java-app
+3.cd docker-java-app
+4.nano Hello.java
+class Hello{
+    public static void main(String[] args) {
+        System.out.println("Hello, World!"); 
+    }
+}
+
+5.nano Dockerfile
+From openjdk
+LABEL author='apsit'
+COPY . /var/www/java
+WORKDIR /var/www/java
+RUN javac Hello.java
+CMD ["java","Hello"]
+
+6.docker build -t apsit/javaapp .
+7.docker images
+8.docker run -d --name apsit_javacontainer [idno]
+9.docker ps -a
+10.docker run -d --name apsit_javacontainer1 [idno] tail -f /dev/null
+11.docker ps -a 
+12.docker exec -it [2nd dockerconatinerid] bash
+13.javac Hello.java
+14.java Hello

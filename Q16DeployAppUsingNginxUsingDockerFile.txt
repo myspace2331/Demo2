@@ -1,0 +1,119 @@
+Q16.Deploy web application using nginx webserver using docker Dockerfile
+
+
+Deploy Nginx Web App with a Dockerfile
+Objective: To create a Dockerfile that packages a custom web page into a new Nginx image, and then run a container from that image to deploy the web app.
+Step 1: Create the Project Files
+First, create the two files needed for the build: your web page and the Dockerfile recipe.
+Create a Project Folder:
+Open your terminal and create a new, empty folder for your project.
+code
+Bash
+mkdir my-nginx-app
+cd my-nginx-app
+Create the index.html File:
+This will be your simple web application. Create the file:
+code
+Bash
+nano index.html
+Paste the following HTML code inside:
+code
+Html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Nginx</title>
+</head>
+<body>
+    <h1>Deployed with a Dockerfile!</h1>
+    <p>This Nginx server is running from a custom Docker image.</p>
+</body>
+</html>
+Press Ctrl+X, then Y, then Enter to save and exit.
+Create the Dockerfile:
+In the same folder, create the Dockerfile:
+code
+Bash
+nano Dockerfile
+Paste the following instructions inside. This is the recipe for your custom image.
+code
+Dockerfile
+# Use the official Nginx image as the base image. It's lightweight and pre-configured.
+FROM nginx:latest
+
+# Copy your custom index.html file from your project folder to the Nginx web root directory inside the image.
+COPY index.html /usr/share/nginx/html/
+Press Ctrl+X, then Y, then Enter to save and exit.
+You now have a folder containing index.html and Dockerfile.
+Step 2: Build the Custom Docker Image
+Make sure your terminal is inside the my-nginx-app folder.
+Run the docker build command to create your image. We will name it my-custom-nginx.
+code
+Bash
+docker build -t my-custom-nginx .
+Command Breakdown:
+docker build: The command to build an image.
+-t my-custom-nginx: Gives the image a "tag" or name.
+.: Tells Docker to use the Dockerfile in the current directory.
+Step 3: Run the Container to Deploy the Web App
+Run your new image as a container.
+code
+Bash
+docker run -d -p 3032:80 --name my-nginx-container my-custom-nginx
+Command Breakdown:
+-d: Runs the container in the background (detached).
+-p 3032:80: Maps port 3032 on your computer to port 80 inside the container.
+--name my-nginx-container: Gives the running container a name.
+my-custom-nginx: The custom image you just built.
+Step 4: Verify the Deployment
+Open a web browser on your computer.
+Go to the following address:
+http://localhost:3032
+You should see your custom web page with the heading "Deployed with a Dockerfile!". This confirms your deployment was successful.
+
+or 
+
+Deploy Web App (nginx) via Minimal Dockerfile
+
+Step 1: Create Project Files
+Create Directory & Files:
+
+Bash
+mkdir myapp
+cd myapp
+nano index.html
+
+Save & Exit (Ctrl+O, Enter, Ctrl+X).
+
+Bash
+nano Dockerfile
+
+Dockerfile
+
+FROM nginx
+COPY index.html /usr/share/nginx/html
+
+Step 2: Ensure Docker is Running
+(Optional check)
+
+Bash
+
+sudo systemctl status docker
+If it's not active, start it: sudo systemctl start docker
+
+Step 3: Build the Docker Image
+Make sure you're in the myapp folder.
+
+Bash
+docker build -t myapp .
+
+Step 4: Run the Docker Container
+
+Bash
+
+docker run -d -p 8083:80 myapp
+
+Step 5: Verify
+Open your browser.
+
+Go to http://localhost:8083.

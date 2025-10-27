@@ -1,0 +1,34 @@
+Q7. Demonstrate how to deploy “addition of a number” java application using a Dockerfile? 
+
+Steps:
+1.cd Downloads
+2.mkdir docker-java-app
+3.cd docker-java-app
+4.nano sum.java
+class sum{
+
+  public static void main(String[] args) {
+    int first = 10;
+    int second = 20;
+    int sum = first + second;
+    System.out.println(first + " + " + second + " = "  + sum);
+  }
+}
+
+5.nano Dockerfile
+From openjdk
+LABEL author='apsit'
+COPY . /var/www/java
+WORKDIR /var/www/java
+RUN javac sum.java
+CMD ["java","sum"]
+
+6.docker build -t apsit/javaapp .
+7.docker images
+8.docker run -d --name apsit_javacontainer [idno]
+9.docker ps -a
+10.docker run -d --name apsit_javacontainer1i9 [idno] tail -f /dev/null
+11.docker ps -a 
+12.docker exec -it [2nd dockerconatinerid] bash
+13.javac sum.java
+14.java sum
